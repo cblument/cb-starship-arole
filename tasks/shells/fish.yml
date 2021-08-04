@@ -1,0 +1,10 @@
+- name: Enable in fish shell
+  lineinfile:
+    path: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish"
+    line: "starship init fish | source"
+    create: yes
+
+- name: configre
+  copy:
+    src: starship.toml
+    dest: "{{ lookup('env', 'HOME') }}/.config/starship.toml"

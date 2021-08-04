@@ -1,0 +1,5 @@
+- name: Enable in fish shell
+  lineinfile:
+    path: "{{ lookup('env', 'HOME') }}/.zshrc"
+    line: "eval \"$(starship init zsh)\""
+    create: yes

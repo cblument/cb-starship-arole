@@ -1,11 +1,7 @@
 ---
 - include: "{{ ansible_distribution }}/main.yml"
 
-- name: Enable in fish shell
-  lineinfile:
-    path: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish"
-    line: "starship init fish | source"
-    create: yes
+- include: "shells/{{ ansible_user_shell.split('/')[-1] }}.yml"
 
 - name: configre
   copy:
