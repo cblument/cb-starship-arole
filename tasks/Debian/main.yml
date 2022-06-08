@@ -1,0 +1,14 @@
+---
+- name: Get starship install script
+  get_url:
+    url: https://starship.rs/install.sh
+    dest: /tmp/starship_install.sh
+    mode: '0755'
+
+# :( :( :( 
+# TODO: Create a PPA or something instead of this
+- name: Install starship
+  shell:
+    cmd: /tmp/starship_install.sh --yes
+    executable: /bin/sh
+  become: yes
