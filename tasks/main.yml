@@ -3,7 +3,12 @@
 
 - include: "shells/{{ ansible_user_shell.split('/')[-1] }}.yml"
 
+- name: create config directory
+  file:
+    path: "{{ ansible_user_dir }}/.config/"
+    state: directory
+
 - name: configre
   copy:
     src: starship.toml
-    dest: "{{ lookup('env', 'HOME') }}/.config/starship.toml"
+    dest: "{{  ansible_user_dir }}/.config/starship.toml"
